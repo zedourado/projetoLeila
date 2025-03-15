@@ -1,0 +1,48 @@
+#bodyLogin {
+    background-color: rgba(255, 255, 255, 0.384); 
+    background-image: url("../img/background.png") !important;
+    background-repeat: repeat;
+    background-position: center;
+    background-attachment: fixed; /* Impede que o fundo se mova */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Impede rolagem */
+}
+
+    #logoLogin{
+
+        width:100%;
+    }
+
+  /* Box de login */
+  .login-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: fixed; /* Fixa o login-box */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Compensa o deslocamento */
+}
+
+    .form-control {
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    /* Botão Login */
+    .btn-login {
+        background: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    .btn-login:hover {
+        background: #0056b3;
+    }
