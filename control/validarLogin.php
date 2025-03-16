@@ -7,6 +7,14 @@ include ('conexao.php');
 	$email = strtolower($_POST['email']);
 	$senha = md5($_POST['senha']);
 
+	if (empty($_POST['email']) || empty($_POST['senha'])) {
+		echo json_encode([
+			"success" => false,
+			"message" => "Existem campos vazios, verifique!"
+		]);
+		exit; // Interrompe a execução do script
+	}
+
 	$sqlBuscaUser = "SELECT * FROM clientes WHERE CLIENTE_EMAIL = :email AND CLIENTE_SENHA = :senha";
 	$queryBuscaUser = $PDO->prepare($sqlBuscaUser);
 	$queryBuscaUser->bindParam(':email', $email);
@@ -18,14 +26,16 @@ include ('conexao.php');
 	if ($userData) {
 
 		// Verificação se o cadastro está ativo
-		$ativo = $userData['ativo'];
+		$ativo = $userData['CLIENTE_ATIVO'];
 
 		if ($ativo == 'N') {
-			$response['status'] = "error";
+
+			$response['success'] = false;
 			$response['message'] = "O seu Cadastro ainda não está Ativado, Verifique o seu e-mail!";
+
 		} else {
 
-			$response['status'] = "success";
+			$response['success'] = true;
 			$response['message'] = "Login bem-sucedido!";
 			$_SESSION['CLIENTE_ID'] = $userData['CLIENTE_ID'];
 			$_SESSION['CLIENTE_NOME'] = $userData['CLIENTE_NOME'];
@@ -33,7 +43,7 @@ include ('conexao.php');
 		}
 	} else {
 
-		$response['status'] = "error";
+		$response['status'] = false;
 		$response['message'] = "Usuário/Senha Incorreta!";
 	}
 
