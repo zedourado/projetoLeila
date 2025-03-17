@@ -121,7 +121,6 @@
   </div>
 </div>
 
-
 <!-- Modal List Clientes -->
 <div class="modal fade" id="listClientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -313,6 +312,25 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-calendar"></i> Meus Agendamentos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="listAgendamentos"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x"></i>Fechar</button>
+        <button type="button" onclick="openModalAddCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)" class="btn btn-sm btn-success"><i class="bi bi-plus"></i> Adicionar Agendamento</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal List Agendamentos Administrativo -->
+<div class="modal fade" id="listAgendamentosAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-calendar"></i> Agendamentos</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

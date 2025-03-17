@@ -1,4 +1,6 @@
-<?php require_once('control/validarSessao.php'); ?>
+<?php //require_once('control/validarSessao.php'); 
+$_SESSION['CLIENTE_ID'] = '3';
+$_SESSION['CLIENTE_NOME'] = "JOSÉ DOURADO";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,9 +62,6 @@
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="#" class="nav-link active"><i class="bi bi-house"></i> Início</a>
-            </li>
-            <li>
-                <a onclick="listClientes()" class="nav-link text-white"><i class="bi bi-people"></i> Clientes</a>
             </li>
             <li>
                 <a onclick="listAgendamentosCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)" class="nav-link text-white"><i class="bi bi-calendar3-week"></i> Agendamentos</a>

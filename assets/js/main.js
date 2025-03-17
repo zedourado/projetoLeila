@@ -328,3 +328,43 @@ function listAgendamentosCliente(id){
 
 }
 
+function listAgendamentosAdmin(id){
+
+    const formData = new FormData();
+    formData.append('cmd', 'listEventos');
+
+    fetch('control/control_agenda.php', {
+        method: 'POST',
+        body: formData 
+    })
+    .then(response => response.json()) 
+    .then(data => {
+
+            const eventos = data.eventos;
+
+            const listAgendamentos = document.getElementById('listAgendamentos');
+            listAgendamentos.innerHTML = '';
+    
+            eventos.forEach(evento => {
+                const card = `
+                    <div class="col-6 m-2 cardAgendamento" onclick="viewAgendamento(${evento.EVENTO_ID})">
+                        <div class="row">
+                            <div class="col-8">
+                                <p><i class="bi bi-calendar-event"></i> ${evento.EVENTO_DATA} - ${evento.EVENTO_HORA}</p>
+                            </div>
+                            <div class="col-4">
+                                <i class="bi bi-hourglass" style="color: ${evento.EVENTO_STATUS === 'PENDENTE' ? 'orange' : 'green'}"></i> ${evento.EVENTO_STATUS}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            
+                listAgendamentos.innerHTML += card;
+            });
+            
+
+    })
+
+    $('#listAgendamentosAdmin').modal('show');
+
+}
