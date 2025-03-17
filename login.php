@@ -19,8 +19,6 @@
     <!-- Script JS -->
     <script src="assets/js/main.js"></script>
 
-
-
     <title>Portal do Cliente | Cabeleleira Leila - Salão de Beleza</title>
 </head>
 <body id="bodyLogin">

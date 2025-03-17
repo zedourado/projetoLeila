@@ -11,13 +11,12 @@
     overflow: hidden; /* Impede rolagem */
 }
 
-    #logoLogin{
+#logoLogin {
+    width: 100%;
+}
 
-        width:100%;
-    }
-
-  /* Box de login */
-  .login-box {
+/* Box de login */
+.login-box {
     background: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -31,18 +30,143 @@
     transform: translate(-50%, -50%); /* Compensa o deslocamento */
 }
 
-    .form-control {
-        border-radius: 5px;
-        padding: 10px;
-    }
+.form-control {
+    border-radius: 5px;
+    padding: 10px;
+}
 
-    /* Botão Login */
-    .btn-login {
-        background: #007bff;
-        color: white;
-        font-weight: bold;
-    }
+/* Botão Login */
+.btn-login {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+}
 
-    .btn-login:hover {
-        background: #0056b3;
+.btn-login:hover {
+    background: #0056b3;
+}
+
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+    padding: 20px 0;
+    background-color: whitesmoke;
+    min-height: 40px;
+}
+
+.breadcrumbs h2 {
+    font-size: 24px;
+    font-weight: 300;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .breadcrumbs h2 {
+        margin: 0 0 10px 0;
     }
+}
+
+.breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.breadcrumbs ol li+li {
+    padding-left: 10px;
+}
+
+.breadcrumbs ol li+li::before {
+    display: inline-block;
+    padding-right: 10px;
+    color: #6c757d;
+    content: "/";
+}
+
+/*--------------------------------------------------------------
+# Layout adjustments for Sidebar
+--------------------------------------------------------------*/
+html, body {
+    height: 100%;
+}
+
+.content {
+    min-height: calc(100vh - 120px); /* Ajusta para garantir que o footer fique no final */
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+}
+
+/* Sidebar adjustments */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    background-color: #343a40;
+    z-index: 100; /* Garante que a sidebar fique acima do conteúdo principal */
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 15px;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #007bff;
+}
+
+.sidebar .nav-link.active {
+    background-color: #007bff;
+}
+
+.sidebar ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+/* Main content area */
+.main-content {
+    margin-left: 280px; /* Espaço suficiente para a sidebar */
+    padding: 20px;
+}
+
+/* Adjustments for Header */
+header {
+    z-index: 10;
+}
+
+/* CARD AGENDAMENTO */
+
+.cardAgendamento{
+
+    border: 1px solid #C6C6C6;
+    border-radius: 10px;
+}
+
+.cardAgendamento:hover{
+
+    cursor:pointer;
+    background:#e2e2e2;
+}
+
+.tipoServicoCard{
+
+    margin-bottom: 5px;
+}

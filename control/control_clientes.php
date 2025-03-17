@@ -19,6 +19,7 @@ switch($cmd){
         $CLIENTE_BAIRRO= $_POST['CLIENTE_BAIRRO'];
         $CLIENTE_CIDADE= $_POST['CLIENTE_CIDADE'];
         $CLIENTE_UF= $_POST['CLIENTE_UF'];
+        $CLIENTE_CEP= $_POST['CLIENTE_CEP'];
         $CLIENTE_EMAIL= $_POST['CLIENTE_EMAIL'];
         $CLIENTE_TELEFONE= $_POST['CLIENTE_TELEFONE'];
         $CLIENTE_CELULAR= $_POST['CLIENTE_CELULAR'];
@@ -34,8 +35,8 @@ switch($cmd){
         }
 
         //Script para Add o Cliente
-        $sqlAddCliente = "INSERT INTO CLIENTES(CLIENTE_NOME, CLIENTE_SEXO, CLIENTE_NASCIMENTO, CLIENTE_LOGRADOURO, CLIENTE_NUMERO, CLIENTE_COMPLEMENTO, CLIENTE_BAIRRO, CLIENTE_CIDADE, CLIENTE_UF, CLIENTE_EMAIL, CLIENTE_TELEFONE, CLIENTE_CELULAR, CLIENTE_SENHA)
-                            VALUES(:CLIENTE_NOME, :CLIENTE_SEXO, :CLIENTE_NASCIMENTO, :CLIENTE_LOGRADOURO, :CLIENTE_NUMERO, :CLIENTE_COMPLEMENTO, :CLIENTE_BAIRRO, :CLIENTE_CIDADE, :CLIENTE_UF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CELULAR, :CLIENTE_SENHA)";
+        $sqlAddCliente = "INSERT INTO CLIENTES(CLIENTE_NOME, CLIENTE_SEXO, CLIENTE_NASCIMENTO, CLIENTE_LOGRADOURO, CLIENTE_NUMERO, CLIENTE_COMPLEMENTO, CLIENTE_BAIRRO, CLIENTE_CIDADE, CLIENTE_UF, CLIENTE_CEP, CLIENTE_EMAIL, CLIENTE_TELEFONE, CLIENTE_CELULAR, CLIENTE_SENHA)
+                            VALUES(:CLIENTE_NOME, :CLIENTE_SEXO, :CLIENTE_NASCIMENTO, :CLIENTE_LOGRADOURO, :CLIENTE_NUMERO, :CLIENTE_COMPLEMENTO, :CLIENTE_BAIRRO, :CLIENTE_CIDADE, :CLIENTE_UF, :CLIENTE_CEP, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CELULAR, :CLIENTE_SENHA)";
         $queryAddCliente = $PDO->prepare($sqlAddCliente);
         $queryAddCliente->bindParam(':CLIENTE_NOME', $CLIENTE_NOME);
         $queryAddCliente->bindParam(':CLIENTE_SEXO', $CLIENTE_SEXO);
@@ -46,6 +47,7 @@ switch($cmd){
         $queryAddCliente->bindParam(':CLIENTE_BAIRRO', $CLIENTE_BAIRRO);
         $queryAddCliente->bindParam(':CLIENTE_CIDADE', $CLIENTE_CIDADE);
         $queryAddCliente->bindParam(':CLIENTE_UF', $CLIENTE_UF);
+        $queryAddCliente->bindParam(':CLIENTE_CEP', $CLIENTE_CEP);
         $queryAddCliente->bindParam(':CLIENTE_EMAIL', $CLIENTE_EMAIL);
         $queryAddCliente->bindParam(':CLIENTE_TELEFONE', $CLIENTE_TELEFONE);
         $queryAddCliente->bindParam(':CLIENTE_CELULAR', $CLIENTE_CELULAR);
@@ -60,6 +62,31 @@ switch($cmd){
         }
 
     break;
+
+    case "listClientes":
+    
+        $sqlListClientes = "SELECT * FROM clientes";
+        $queryListClientes = $PDO->prepare($sqlListClientes);
+        $queryListClientes->execute();
+        $clientes = $queryListClientes->fetchAll(PDO::FETCH_ASSOC);
+
+        $response['clientes'] = $clientes;
+    
+    break;
+
+    case "viewCliente":
+    
+        $CLIENTE_ID = $_POST['CLIENTE_ID'];
+        $sqlViewCliente = "SELECT * FROM clientes WHERE CLIENTE_ID = :CLIENTE_ID";
+        $queryViewCliente = $PDO->prepare($sqlViewCliente);
+        $queryViewCliente->bindParam(':CLIENTE_ID', $CLIENTE_ID);
+        $queryViewCliente->execute();
+        $cliente = $queryViewCliente->fetch(PDO::FETCH_ASSOC);
+
+        $response['cliente'] = $cliente;
+    
+    break;
+
 }
 
 echo json_encode($response);
