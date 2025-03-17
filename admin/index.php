@@ -57,7 +57,7 @@ $_SESSION['CLIENTE_NOME'] = "JOSÉ DOURADO";
     <div class="sidebar">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <span class="fs-4">Portal do Cliente</span>
+            <span class="fs-4">Painel Admin</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
@@ -88,7 +88,7 @@ $_SESSION['CLIENTE_NOME'] = "JOSÉ DOURADO";
                         <div class="col-8">
                         <p><i class="bi bi-calendar-event"></i> 01/01/0001 - 00h00</p>
                         </div>
-                        <div class="col-4"><i class="bi bi-hourglass" style="color: orange"></i> Pendente</div>
+                        <div class="col-4"><i class="bi bi-check" style="color: green"></i> Confirmado</div>
                     </div>
                 </div>
             </div>
