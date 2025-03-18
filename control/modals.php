@@ -121,6 +121,144 @@
   </div>
 </div>
 
+<!-- Modal Cadastro de Colaboradores -->
+<div class="modal fade" id="cadastroColaborador" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-person-badge"></i> Cadastro de Novo Colaborador</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formCadastroColaborador">
+            <div class="row">
+            <div class="col-6">
+                <label for="COLAB_NOME">Nome Completo:</label>
+                <input type="text" class="form-control form-control-sm" name="COLAB_NOME" id="COLAB_NOME">
+            </div>
+            <div class="col-3">
+                <label for="COLAB_SEXO">Sexo:</label><br>
+                <select class="form-select form-select-sm" name="COLAB_SEXO" id="COLAB_SEXO">
+                    <option value="MASCULINO">Masculino</option>
+                    <option value="FEMININO">Feminino</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="COLAB_NASCIMENTO">Data de Nascimento:</label>
+                <input type="date" class="form-control form-control-sm" name="COLAB_NASCIMENTO" id="COLAB_NASCIMENTO">
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <label for="COLAB_CEP">CEP:</label>
+                    <input type="text" class="form-control form-control-sm" name="COLAB_CEP" id="COLAB_CEP">
+                </div>
+                <div class="col-4">
+                    <label for="COLAB_LOGRADOURO">Endereço:</label>
+                    <input type="text" class="form-control form-control-sm" name="COLAB_LOGRADOURO" id="COLAB_LOGRADOURO">
+                </div>
+                <div class="col-2">
+                    <label for="COLAB_NUMERO">Número:</label>
+                    <input type="text" class="form-control form-control-sm" name="COLAB_NUMERO" id="COLAB_NUMERO">
+                </div>
+                <div class="col-4">
+                    <label for="COLAB_COMPLEMENTO">Complemento:</label>
+                    <input type="text" class="form-control form-control-sm" name="COLAB_COMPLEMENTO" id="COLAB_COMPLEMENTO">
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-5">
+                <label for="COLAB_BAIRRO">Bairro:</label>
+                <input type="text" class="form-control form-control-sm" name="COLAB_BAIRRO" id="COLAB_BAIRRO">
+            </div>
+            <div class="col-5">
+                <label for="COLAB_CIDADE">Cidade:</label>
+                <input type="text" class="form-control form-control-sm" name="COLAB_CIDADE" id="COLAB_CIDADE">
+            </div>
+            <div class="col-2">
+                <label for="COLAB_COMPLEMENTO">UF:</label>
+                <select name="COLAB_UF" id="COLAB_UF" class="form-select fomr-select-sm" required>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP" selected>SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                </select>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="COLAB_EMAIL">E-mail:</label>
+                    <input type="email" class="form-control form-control-sm" name="COLAB_EMAIL" id="COLAB_EMAIL">
+                </div>
+                <div class="col-3">
+                    <label for="COLAB_TELEFONE">Telefone:</label>
+                    <input type="text" class="form-control form-control-sm" name="COLAB_TELEFONE" id="COLAB_TELEFONE">
+                </div>
+                <div class="col-3">
+                    <label for="COLAB_CELULAR">Celular/WhatsApp:</label>
+                    <input type="text" class="form-control form-control-sm" name="COLAB_CELULAR" id="COLAB_CELULAR">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <h6>Senha:</h6>
+                <div class="col-3">
+                    <label for="COLAB_SENHA">Digite uma Senha:</label>
+                    <input type="password" class="form-control form-control-sm" name="COLAB_SENHA" id="COLAB_SENHA">
+                </div>
+                <div class="col-3">
+                    <label for="COLAB_SENHA2">Confirme a Senha:</label>
+                    <input type="password" class="form-control form-control-sm" name="COLAB_SENHA2" id="COLAB_SENHA2">
+                </div>
+                <div class="col-6">
+                <label>Permissão:</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="COLAB_PERMISSAO" id="inlineRadio1" value="ADMIN">
+                        <label class="form-check-label" for="inlineRadio1">Admin</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="COLAB_PERMISSAO" id="inlineRadio2" value="GERENCIA">
+                        <label class="form-check-label" for="inlineRadio2">Gerencia</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="COLAB_PERMISSAO" id="inlineRadio3" value="USUARIO">
+                        <label class="form-check-label" for="inlineRadio3">Usuário</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x"></i> Cancelar</button>
+        <button type="button" onclick="cadastroColaborador()" class="btn btn-success"><i class="bi bi-floppy"></i> Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal List Clientes -->
 <div class="modal fade" id="listClientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -171,7 +309,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal"><i class="bi bi-x"></i> Fechar</button>
-        <button type="button" class="btn btn-sm btn-success"><i class="bi bi-plus"></i> Adicionar Colaborador</button>
+        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#cadastroColaborador"><i class="bi bi-plus"></i> Adicionar Colaborador</button>
       </div>
     </div>
   </div>
@@ -286,7 +424,7 @@
   </div>
 </div>
 
-<!-- Modal View Cliente -->
+<!-- Modal View Colaborador -->
 <div class="modal fade" id="viewColaborador" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">

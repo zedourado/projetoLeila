@@ -30,6 +30,10 @@ $(document).ready(function(){
     $("#CLIENTE_CEP").mask("00000-000"); // Aplica a máscara no campo CEP
     $('#CLIENTE_TELEFONE').mask('(99) 9999-9999');
     $('#CLIENTE_CELULAR').mask('(99) 99999-9999');
+
+    $("#COLAB_CEP").mask("00000-000"); // Aplica a máscara no campo CEP
+    $('#COLAB_TELEFONE').mask('(99) 9999-9999');
+    $('#COLAB_CELULAR').mask('(99) 99999-9999');
 });
 
 //Data Breadcumbs
@@ -91,6 +95,39 @@ function cadastroClienteLogin(){
     .then(data => {
         if (data.success === true) {
             $('#cadastroLogin').modal('hide');
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: data.message,
+                showConfirmButton: false,
+                timer: 2000
+              });
+        } else {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: data.message,
+                showConfirmButton: false,
+                timer: 2000
+              });
+        }
+    })
+}
+
+function cadastroColaborador(){
+
+    const formCadastro = document.getElementById('formCadastroColaborador');
+    const formData = new FormData(formCadastro);
+    formData.append('cmd', 'addColaborador');
+
+    fetch('../control/control_colaboradores.php', {
+        method: 'POST',
+        body: formData 
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        if (data.success === true) {
+            $('#cadastroColaborador').modal('hide');
             Swal.fire({
                 position: "top-end",
                 icon: "success",
