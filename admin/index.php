@@ -1,7 +1,4 @@
-<?php //require_once('control/validarSessao.php'); 
-$_SESSION['CLIENTE_ID'] = '3';
-$_SESSION['CLIENTE_NOME'] = "JOSÉ DOURADO";
-?>
+<?php require_once('control/validarSessao.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +42,7 @@ $_SESSION['CLIENTE_NOME'] = "JOSÉ DOURADO";
                     <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
                     <li><a class="dropdown-item" href="#"><i class="bi bi-key"></i> Alterar Senha</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="control/logout.php"><i class="bi bi-door-closed"></i> Sair</a></li>
+                    <li><a class="dropdown-item" href="../control/logout.php"><i class="bi bi-door-closed"></i> Sair</a></li>
                 </ul>
             </div>
         </div>
@@ -68,7 +65,10 @@ $_SESSION['CLIENTE_NOME'] = "JOSÉ DOURADO";
                 <a onclick="listClientes()" class="nav-link text-white"><i class="bi bi-people"></i> Clientes</a>
             </li>
             <li>
-                <a onclick="listAgendamentosAdmin(<?php echo $_SESSION['CLIENTE_ID'];?>)" class="nav-link text-white"><i class="bi bi-calendar3-week"></i> Agendamentos</a>
+                <a onclick="listColaboradores()" class="nav-link text-white"><i class="bi bi-person-badge"></i> Colaboradores</a>
+            </li>
+            <li>
+                <a onclick="listAgendamentosAdmin(<?php echo $_SESSION['COLAB_ID'];?>)" class="nav-link text-white"><i class="bi bi-calendar3-week"></i> Agendamentos</a>
             </li>
             <li>
                 <a href="#" class="nav-link text-white"><i class="bi bi-door-closed"></i> Sair</a>
@@ -79,7 +79,7 @@ $_SESSION['CLIENTE_NOME'] = "JOSÉ DOURADO";
 
     <!-- Main Content -->
     <div class="main-content">
-        <h4>Olá <?php echo $_SESSION['CLIENTE_NOME']; ?></h4>
+        <h4>Olá <?php echo $_SESSION['COLAB_NOME']; ?></h4>
         <div class="mt-5">
             <h5>Agendamentos Confirmados:</h5>
             <div class="row d-flex">

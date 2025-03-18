@@ -3,7 +3,7 @@
 session_start();
 ob_start();  
 // Verifica se existe os dados da sessão de login
-if(!isset($_SESSION['CLIENTE_ID'])){
+if(!isset($_SESSION['COLAB_ID'])){
 session_unset();
 session_destroy();
 session_start();

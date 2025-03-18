@@ -1,6 +1,4 @@
-<?php //require_once('control/validarSessao.php'); 
-$_SESSION['CLIENTE_ID'] = '3';
-$_SESSION['CLIENTE_NOME'] = "JOSÉ DOURADO";?>
+<?php require_once('control/validarSessao.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,17 +74,10 @@ $_SESSION['CLIENTE_NOME'] = "JOSÉ DOURADO";?>
     <!-- Main Content -->
     <div class="main-content">
         <h4>Olá <?php echo $_SESSION['CLIENTE_NOME']; ?></h4>
+        <script>listConfirmadosIndexCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)</script>
         <div class="mt-5">
             <h5>Agendamentos Confirmados:</h5>
-            <div class="row d-flex">
-                <div class="col-4 m-2 cardAgendamento" onclick="viewAgendamento(1)">
-                    <div class="row">
-                        <div class="col-8">
-                        <p><i class="bi bi-calendar-event"></i> 01/01/0001 - 00h00</p>
-                        </div>
-                        <div class="col-4"><i class="bi bi-hourglass" style="color: orange"></i> Pendente</div>
-                    </div>
-                </div>
+            <div id="listConfirmadosCliente">
             </div>
         </div>
     </div>

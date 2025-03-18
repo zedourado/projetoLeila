@@ -21,10 +21,10 @@
         <h2 style="color: #9b846e">Acesso Administrativo</h2>
         <form id="formLogin">
             <div class="mb-3">
-                <input type="text" class="form-control"name="email" placeholder="Email" required>
+                <input type="text" class="form-control" name="email" placeholder="Email" required>
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" placeholder="Senha" required>
+                <input type="password" class="form-control" name="senha" placeholder="Senha" required>
             </div>
             <button type="button" onclick="validarLogin()" class="btn btn-sm btn-success w-100"><i class="bi bi-box-arrow-in-right"></i> Entrar</button>
         </form>

@@ -147,6 +147,36 @@
   </div>
 </div>
 
+<!-- Modal List Colaboradores -->
+<div class="modal fade" id="listColaboradores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-person-badge"></i> Colaboradores</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Código  </th>
+                <th scope="col">Nome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyColaboradoresList">
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal"><i class="bi bi-x"></i> Fechar</button>
+        <button type="button" class="btn btn-sm btn-success"><i class="bi bi-plus"></i> Adicionar Colaborador</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal View Cliente -->
 <div class="modal fade" id="viewCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -159,7 +189,7 @@
         <div class="row">
             <div class="col-6">
                 <label for="CLIENTE_NOME">Nome Completo:</label>
-                <input type="text" class="form-control form-control-sm" name="CLIENTE_NOME" id="nomeCliente">
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_NOME" id="nomeCliente">
             </div>
             <div class="col-3">
                 <label for="CLIENTE_SEXO">Sexo:</label><br>
@@ -170,35 +200,35 @@
             </div>
             <div class="col-3">
                 <label for="CLIENTE_NASCIMENTO">Data de Nascimento:</label>
-                <input type="date" class="form-control form-control-sm" name="CLIENTE_NASCIMENTO" id="nascCliente">
+                <input readonly type="date" class="form-control form-control-sm" name="CLIENTE_NASCIMENTO" id="nascCliente">
             </div>
         </div>
         <div class="row">
             <div class="col-2">
                 <label for="CLIENTE_CEP">CEP:</label>
-                <input type="text" class="form-control form-control-sm" name="CLIENTE_CEP" id="CEPCliente">
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_CEP" id="CEPCliente">
             </div>
             <div class="col-4">
                 <label for="CLIENTE_LOGRADOURO">Endereço:</label>
-                <input type="text" class="form-control form-control-sm" name="CLIENTE_LOGRADOURO" id="ruaCliente">
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_LOGRADOURO" id="ruaCliente">
             </div>
             <div class="col-2">
                 <label for="CLIENTE_NUMERO">Número:</label>
-                <input type="text" class="form-control form-control-sm" name="CLIENTE_NUMERO" id="numeroCliente">
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_NUMERO" id="numeroCliente">
             </div>
             <div class="col-4">
                 <label for="CLIENTE_COMPLEMENTO">Complemento:</label>
-                <input type="text" class="form-control form-control-sm" name="CLIENTE_COMPLEMENTO" id="complementoCliente">
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_COMPLEMENTO" id="complementoCliente">
             </div>
         </div>
         <div class="row">
             <div class="col-5">
                 <label for="CLIENTE_BAIRRO">Bairro:</label>
-                <input type="text" class="form-control form-control-sm" name="CLIENTE_BAIRRO" id="bairroCliente">
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_BAIRRO" id="bairroCliente">
             </div>
             <div class="col-5">
                 <label for="CLIENTE_CIDADE">Cidade:</label>
-                <input type="text" class="form-control form-control-sm" name="CLIENTE_CIDADE" id="cidadeCliente">
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_CIDADE" id="cidadeCliente">
             </div>
             <div class="col-2">
                 <label for="CLIENTE_COMPLEMENTO">UF:</label>
@@ -236,20 +266,129 @@
         <div class="row">
             <div class="col-6">
                 <label for="CLIENTE_EMAIL">E-mail:</label>
-                <input type="email" class="form-control form-control-sm" name="CLIENTE_EMAIL" id="emailCliente">
+                <input readonly type="email" class="form-control form-control-sm" name="CLIENTE_EMAIL" id="emailCliente">
             </div>
             <div class="col-3">
                 <label for="CLIENTE_TELEFONE">Telefone:</label>
-                <input type="text" class="form-control form-control-sm" name="CLIENTE_TELEFONE" id="telefoneCliente">
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_TELEFONE" id="telefoneCliente">
             </div>
             <div class="col-3">
                 <label for="CLIENTE_CELULAR">Celular/WhatsApp:</label>
-                <input type="text" class="form-control form-control-sm" name="CLIENTE_CELULAR" id="celularCliente">
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_CELULAR" id="celularCliente">
             </div>
         </div>
     </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" onclick="listClientes()" data-bs-dismiss="modal"><i class='bi bi-x'></i> Fechar</button>
+        <button type="button" class="btn btn-sm btn-primary"><i class='bi bi-pencil'></i> Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal View Cliente -->
+<div class="modal fade" id="viewColaborador" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5"><i class='bi bi-person-badge'></i> Visualizar Colaborador</h1>
+        <button type="button" class="btn-close" onclick="listColaboradores()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+                <label for="CLIENTE_NOME">Nome Completo:</label>
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_NOME" id="nomeColaborador">
+            </div>
+            <div class="col-3">
+                <label for="CLIENTE_SEXO">Sexo:</label><br>
+                <select class="form-select form-select-sm" name="CLIENTE_SEXO" id="sexoColaborador">
+                    <option value="MASCULINO">Masculino</option>
+                    <option value="FEMININO">Feminino</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="CLIENTE_NASCIMENTO">Data de Nascimento:</label>
+                <input readonly type="date" class="form-control form-control-sm" name="CLIENTE_NASCIMENTO" id="nascColaborador">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label for="CLIENTE_CEP">CEP:</label>
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_CEP" id="CEPColaborador">
+            </div>
+            <div class="col-4">
+                <label for="CLIENTE_LOGRADOURO">Endereço:</label>
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_LOGRADOURO" id="ruaColaborador">
+            </div>
+            <div class="col-2">
+                <label for="CLIENTE_NUMERO">Número:</label>
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_NUMERO" id="numeroColaborador">
+            </div>
+            <div class="col-4">
+                <label for="CLIENTE_COMPLEMENTO">Complemento:</label>
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_COMPLEMENTO" id="complementoColaborador">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <label for="CLIENTE_BAIRRO">Bairro:</label>
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_BAIRRO" id="bairroColaborador">
+            </div>
+            <div class="col-5">
+                <label for="CLIENTE_CIDADE">Cidade:</label>
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_CIDADE" id="cidadeColaborador">
+            </div>
+            <div class="col-2">
+                <label for="CLIENTE_COMPLEMENTO">UF:</label>
+                <select name="CLIENTE_UF" id="UFColaborador" class="form-select fomr-select-sm" required>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP" selected>SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label for="CLIENTE_EMAIL">E-mail:</label>
+                <input readonly type="email" class="form-control form-control-sm" name="CLIENTE_EMAIL" id="emailColaborador">
+            </div>
+            <div class="col-3">
+                <label for="CLIENTE_TELEFONE">Telefone:</label>
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_TELEFONE" id="telefoneColaborador">
+            </div>
+            <div class="col-3">
+                <label for="CLIENTE_CELULAR">Celular/WhatsApp:</label>
+                <input readonly type="text" class="form-control form-control-sm" name="CLIENTE_CELULAR" id="celularColaborador">
+            </div>
+        </div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" onclick="listColaboradores()" data-bs-dismiss="modal"><i class='bi bi-x'></i> Fechar</button>
         <button type="button" class="btn btn-sm btn-primary"><i class='bi bi-pencil'></i> Editar</button>
       </div>
     </div>
@@ -262,7 +401,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel"><i class='bi bi-calendar-plus'></i> Adicionar Agendamento</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" onclick="listAgendamentosCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form id="formAddEventoCliente">
@@ -308,7 +447,7 @@
 
 <!-- Modal List Agendamentos Cliente -->
 <div class="modal fade" id="listAgendamentosCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-calendar"></i> Meus Agendamentos</h1>
@@ -338,7 +477,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x"></i>Fechar</button>
-        <button type="button" onclick="openModalAddCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)" class="btn btn-sm btn-success"><i class="bi bi-plus"></i> Adicionar Agendamento</button>
+        <button type="button" onclick="openModalAddCliente(<?php echo $_SESSION['COLAB_ID'];?>)" class="btn btn-sm btn-success"><i class="bi bi-plus"></i> Adicionar Agendamento</button>
       </div>
     </div>
   </div>
@@ -356,33 +495,34 @@
             <div class="row">
                 <div class="col-6">
                     <label for="dataEvento"><strong>Data:</strong></label>
-                    <p id="dataEvento"><i class="bi bi-calendar-event"></i> 00/00/0000</p>
+                    <p id="dataEvento"></p>
                 </div>
                 <div class="col-6">
                     <label for="horaEvento"><strong>Hora:</strong></label>
-                    <p id="horaEvento"> <i class="bi bi-clock"></i> 00:00h</p>
+                    <p id="horaEvento"></p>
                 </div>
             </div>
             <div class="row">
                 <label for=""><strong>Serviços:</strong></label>
 
-                <div class="col-3 tipoServicoCard">
+                <div class="col-3 tipoServicoCard" id="serCorte" style="display: none">
                     <h6><i class="bi bi-scissors"></i> Corte</h6>
                 </div>
-                <div class="col-3 tipoServicoCard">
+                <div class="col-3 tipoServicoCard" id="serTintura" style="display: none">
                     <h6><i class="bi bi-droplet"></i> Tintura</h6>
                 </div>
-                <div class="col-3 tipoServicoCard">
+                <div class="col-3 tipoServicoCard" id="serUnhas" style="display: none">
                     <h6><i class="bi bi-brush"></i> Unhas</h6>
                 </div>
-                <div class="col-3 tipoServicoCard">
+                <div class="col-3 tipoServicoCard" id="serSpa" style="display: none">
                     <h6><i class="bi bi-stars"></i> Spa</h6>
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-6">
                     <label for="statusEvento"><strong>Profissional:</strong></label>
-                    <p id="responsavelEvento"><i class="bi bi-person"></i> Leila</p>
+                    <p id="responsavelEvento"></p>
                 </div>
                 <div class="col-6">
                     <label for="statusEvento"><strong>Status:</strong></label>
@@ -390,8 +530,8 @@
                 </div>
             </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x"></i> Cancelar Agendamento</button>
-        <button type="button" class="btn btn-secondary"><i class="bi bi-pencil"></i> Editar Agendamento</button>
+        <button type="button" id="btnCancelarEvento" class="btn btn-danger"><i class="bi bi-x"></i> Cancelar Agendamento</button>
+        <button type="button" id="btnEditarEvento" class="btn btn-secondary"><i class="bi bi-pencil"></i> Editar Agendamento</button>
       </div>
     </div>
   </div>

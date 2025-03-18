@@ -25,7 +25,7 @@
     <div class="login-box">
         <img id="logoLogin" src="assets/img/logo.png">
         <h2 style="color: #9b846e">Portal do Cliente</h2>
-        <form id="formLoginCliente">
+        <form id="formLogin">
             <div class="mb-3">
                 <input type="text" class="form-control" name="email" placeholder="Email" required>
             </div>
