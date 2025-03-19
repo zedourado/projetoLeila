@@ -68,7 +68,7 @@
                 <a onclick="listColaboradores()" class="nav-link text-white"><i class="bi bi-person-badge"></i> Colaboradores</a>
             </li>
             <li>
-                <a onclick="listAgendamentosAdmin(<?php echo $_SESSION['COLAB_ID'];?>)" class="nav-link text-white"><i class="bi bi-calendar3-week"></i> Agendamentos</a>
+                <a onclick="listAgendamentosAdmin(<?php echo $_SESSION['COLAB_ID']; ?>)" class="nav-link text-white"><i class="bi bi-calendar3-week"></i> Agendamentos</a>
             </li>
             <li>
                 <a href="#" class="nav-link text-white"><i class="bi bi-door-closed"></i> Sair</a>

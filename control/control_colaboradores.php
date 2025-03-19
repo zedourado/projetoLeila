@@ -88,6 +88,71 @@ switch($cmd){
     
     break;
 
+    case "editColaborador":
+        
+        $COLAB_ID = $_POST['COLAB_ID'];
+        $COLAB_NOME= $_POST['COLAB_NOME'];
+        $COLAB_SEXO= $_POST['COLAB_SEXO'];
+        $COLAB_NASCIMENTO= $_POST['COLAB_NASCIMENTO'];
+        $COLAB_LOGRADOURO= $_POST['COLAB_LOGRADOURO'];
+        $COLAB_NUMERO= $_POST['COLAB_NUMERO'];
+        $COLAB_COMPLEMENTO= $_POST['COLAB_COMPLEMENTO'];
+        $COLAB_BAIRRO= $_POST['COLAB_BAIRRO'];
+        $COLAB_CIDADE= $_POST['COLAB_CIDADE'];
+        $COLAB_UF= $_POST['COLAB_UF'];
+        $COLAB_CEP= $_POST['COLAB_CEP'];
+        $COLAB_EMAIL= $_POST['COLAB_EMAIL'];
+        $COLAB_TELEFONE= $_POST['COLAB_TELEFONE'];
+        $COLAB_CELULAR= $_POST['COLAB_CELULAR'];
+        $COLAB_PERMISSAO= $_POST['COLAB_PERMISSAO'];
+
+        $sqlEditColaborador = "
+        UPDATE colaboradores 
+        SET 
+            COLAB_NOME = :COLAB_NOME,
+            COLAB_SEXO = :COLAB_SEXO,
+            COLAB_NASCIMENTO = :COLAB_NASCIMENTO,
+            COLAB_LOGRADOURO = :COLAB_LOGRADOURO,
+            COLAB_NUMERO = :COLAB_NUMERO,
+            COLAB_COMPLEMENTO = :COLAB_COMPLEMENTO,
+            COLAB_BAIRRO = :COLAB_BAIRRO,
+            COLAB_CIDADE = :COLAB_CIDADE,
+            COLAB_UF = :COLAB_UF,
+            COLAB_CEP = :COLAB_CEP,
+            COLAB_EMAIL = :COLAB_EMAIL,
+            COLAB_TELEFONE = :COLAB_TELEFONE,
+            COLAB_CELULAR = :COLAB_CELULAR,
+            COLAB_PERMISSAO = :COLAB_PERMISSAO
+        WHERE 
+            COLAB_ID = :COLAB_ID";
+
+        $queryEditColaborador = $PDO->prepare($sqlEditColaborador);
+        $queryEditColaborador->bindParam(':COLAB_ID', $COLAB_ID);
+        $queryEditColaborador->bindParam(':COLAB_NOME', $COLAB_NOME);
+        $queryEditColaborador->bindParam(':COLAB_SEXO', $COLAB_SEXO);
+        $queryEditColaborador->bindParam(':COLAB_NASCIMENTO', $COLAB_NASCIMENTO);
+        $queryEditColaborador->bindParam(':COLAB_LOGRADOURO', $COLAB_LOGRADOURO);
+        $queryEditColaborador->bindParam(':COLAB_NUMERO', $COLAB_NUMERO);
+        $queryEditColaborador->bindParam(':COLAB_COMPLEMENTO', $COLAB_COMPLEMENTO);
+        $queryEditColaborador->bindParam(':COLAB_BAIRRO', $COLAB_BAIRRO);
+        $queryEditColaborador->bindParam(':COLAB_CIDADE', $COLAB_CIDADE);
+        $queryEditColaborador->bindParam(':COLAB_UF', $COLAB_UF);
+        $queryEditColaborador->bindParam(':COLAB_CEP', $COLAB_CEP);
+        $queryEditColaborador->bindParam(':COLAB_EMAIL', $COLAB_EMAIL);
+        $queryEditColaborador->bindParam(':COLAB_TELEFONE', $COLAB_TELEFONE);
+        $queryEditColaborador->bindParam(':COLAB_CELULAR', $COLAB_CELULAR);
+        $queryEditColaborador->bindParam(':COLAB_PERMISSAO', $COLAB_PERMISSAO);
+        
+        if ($queryEditColaborador->execute()) {
+            $response['success'] = true;
+            $response['message'] = "Cadastro alterado com sucesso !";
+        } else {
+            $response['success'] = false;
+            $response['message'] = "Erro ao alterar o Cadastro, Tente novamente mais tarde!";
+        }
+        
+    break;
+
 }
 
 echo json_encode($response);
