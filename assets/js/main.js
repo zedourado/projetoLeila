@@ -87,7 +87,7 @@ function cadastroClienteLogin(){
     const formData = new FormData(formCadastroLogin);
     formData.append('cmd', 'addCliente');
 
-    fetch('../control/control_clientes.php', {
+    fetch('control/control_clientes.php', {
         method: 'POST',
         body: formData 
     })
@@ -386,8 +386,8 @@ function viewAgendamentoAdmin(id){
 
                 case "CONFIRMADO":
                     modalFooter.innerHTML = `
-                        <button type="button" id="btnCancelarEvento" class="btn btn-danger"><i class="bi bi-x"></i> Cancelar</button>
-                        <button type="button" id="btnEditarEvento" class="btn btn-secondary"><i class="bi bi-pencil"></i> Editar</button>
+                        <button type="button" id="btnCancelarEvento" onclick="cancelarEventoAdmin(${evento.EVENTO_ID})" class="btn btn-danger"><i class="bi bi-x"></i> Cancelar</button>
+                        <button type="button" id="btnEditarEvento" onclick="editarEventoAdmin(${evento.EVENTO_ID})" class="btn btn-secondary"><i class="bi bi-pencil"></i> Editar</button>
                     `;
                 break;
 
@@ -1291,5 +1291,57 @@ function editarCliente(id){
         }
     })
 
+
+}
+
+function confirmarEvento(idEvento){
+
+    Swal.fire({
+        title: "Confirmação de Agendamento",
+        text: "Gostaria de confirmar o agendamento e atribuir a você ?!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+            const formData = new FormData();
+            formData.append('cmd', 'setEventoConfirmado');
+            formData.append('EVENTO_ID', idEvento);
+        
+            fetch('../control/control_agenda.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json()) 
+            .then(data => {
+                if(data.success === true){
+                    Swal.fire({
+                        title: "Sucesso!",
+                        text: data.message,
+                        icon: "success"
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Erro!",
+                        text: data.message,
+                        icon: "error"
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: "Erro!",
+                    text: "Houve um problema na comunicação com o servidor.",
+                    icon: "error"
+                });
+            });
+            
+
+        }
+      });
 
 }

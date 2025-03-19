@@ -201,6 +201,32 @@ switch($cmd){
         }
         
     break;
+
+    case "setEventoConfirmado":
+    
+        $EVENTO_ID = $_POST['EVENTO_ID'];
+        $COLAB_ID = $_SESSION['COLAB_ID'];
+        $EVENTO_STATUS = "CONFIRMADO";
+
+        $sqlSetEventoConfirmado = "UPDATE agenda SET EVENTO_STATUS = :EVENTO_STATUS, EVENTO_RESPONSAVEL = :EVENTO_RESPONSAVEL WHERE EVENTO_ID = :EVENTO_ID";
+        $querySetEventoConfirmado = $PDO->prepare($sqlSetEventoConfirmado);
+        $querySetEventoConfirmado->bindParam(':EVENTO_ID', $EVENTO_ID);
+        $querySetEventoConfirmado->bindParam(':EVENTO_STATUS', $EVENTO_STATUS);
+        $querySetEventoConfirmado->bindParam(':EVENTO_RESPONSAVEL', $COLAB_ID);
+        
+        if($querySetEventoConfirmado->execute()){
+
+            $response['success'] = true;
+            $response['message'] = "Agendamento Confirmado!";
+
+        }else{
+
+            $response['success'] = false;
+            $response['message'] = "Erro ao Confirmar Agendamento!";
+
+        }
+
+    break;
 }
 
 echo json_encode($response);
