@@ -81,16 +81,11 @@
     <div class="main-content">
         <h4>Olá <?php echo $_SESSION['COLAB_NOME']; ?></h4>
         <div class="mt-5">
-            <h5>Agendamentos Confirmados:</h5>
-            <div class="row d-flex">
-                <div class="col-4 m-2 cardAgendamento" onclick="viewAgendamento(1)">
-                    <div class="row">
-                        <div class="col-8">
-                        <p><i class="bi bi-calendar-event"></i> 01/01/0001 - 00h00</p>
-                        </div>
-                        <div class="col-4"><i class="bi bi-check" style="color: green"></i> Confirmado</div>
-                    </div>
-                </div>
+            <h5>Agenda da Semana:</h5>
+            <div class="row" id="listConfirmadosColaborador">
+                <script>
+                    listConfirmadosIndexAdmin(<?php echo $_SESSION['COLAB_ID'] ?>);
+                </script>
             </div>
         </div>
     </div>

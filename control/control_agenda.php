@@ -104,6 +104,22 @@ switch($cmd){
         $response['eventos'] = $eventos;
     
     break;
+
+    case "listWeekAdmin":
+
+        $COLAB_ID = $_POST['COLAB_ID'];
+        $today = date('Y-m-d');
+
+        $sqlListEventosAdmin = "SELECT * FROM agenda WHERE EVENTO_RESPONSAVEL = :COLAB_ID AND WEEK(EVENTO_DATA) = WEEK(:TODAY) ORDER BY EVENTO_DATA ASC";
+        $queryListEventosAdmin = $PDO->prepare($sqlListEventosAdmin);
+        $queryListEventosAdmin->bindParam(':COLAB_ID', $COLAB_ID);
+        $queryListEventosAdmin->bindParam(':TODAY', $today);
+        $queryListEventosAdmin->execute();
+        $eventos = $queryListEventosAdmin->fetchAll(PDO::FETCH_ASSOC);
+    
+        $response['eventos'] = $eventos;
+    
+    break;
     
     case "viewEvento":
     

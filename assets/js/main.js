@@ -1221,6 +1221,71 @@ function listConfirmadosIndexCliente(id){
     })
 }
 
+function listConfirmadosIndexAdmin(id){
+
+    const formData = new FormData();
+    formData.append('cmd', 'listWeekAdmin');
+    formData.append('COLAB_ID', id);
+
+    fetch('../control/control_agenda.php', {
+        method: 'POST',
+        body: formData 
+    })
+    .then(response => response.json()) 
+    .then(data => {
+
+            const eventos = data.eventos;
+
+            const listAgendamentos = document.getElementById('listConfirmadosColaborador');
+            listAgendamentos.innerHTML = '';
+    
+            eventos.forEach(evento => {
+                let statusColor, statusIcon;
+                
+                // Usando switch para definir o status
+                switch (evento.EVENTO_STATUS) {
+                    case 'PENDENTE':
+                        statusColor = 'orange';
+                        statusIcon = 'bi-hourglass';  // Você pode alterar o ícone de acordo com o status
+                        break;
+                    case 'CANCELADO':
+                        statusColor = 'red';
+                        statusIcon = 'bi-x-circle';  // Alterando ícone para cancelar
+                        break;
+                    case 'CONFIRMADO':
+                        statusColor = 'green';
+                        statusIcon = 'bi-check-circle';  // Ícone para status confirmado
+                        break;
+                    case 'FINALIZADO':
+                        statusColor = 'blue';
+                        statusIcon = 'bi-check-all';  // Ícone para finalizado
+                        break;
+                    default:
+                        statusColor = 'gray';
+                        statusIcon = 'bi-question-circle';  // Ícone genérico para status desconhecido
+                        break;
+                }
+
+                const card = `
+                    <div class="col-12 m-2 cardAgendamento" onclick="viewAgendamentoAdmin(${evento.EVENTO_ID})">
+                        <div class="row">
+                            <div class="col-7">
+                                <p><i class="bi bi-calendar-event"></i> ${formatarData(evento.EVENTO_DATA)} - ${formatarHora(evento.EVENTO_HORA)}</p>
+                            </div>
+                            <div class="col-5">
+                                <i class="bi ${statusIcon}" style="color: ${statusColor}"></i> ${evento.EVENTO_STATUS}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            
+                listAgendamentos.innerHTML += card;
+            });
+            
+
+    })
+}
+
 function editarColaborador(id){
 
     const formEditColaborador = document.getElementById('formEditColaborador');
