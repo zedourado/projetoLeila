@@ -980,13 +980,11 @@
             </div>
             <div class="col-6">
               <label for="statusEvento"><strong>Status:</strong></label>
-              <p id="statusEvento"><i class="bi bi-check" style="color:Green"></i> Confirmado</p>
+              <p id="statusEventoCliente"><i class="bi bi-check" style="color:Green"></i> Confirmado</p>
             </div>
           </div>
         </div>
-      <div class="modal-footer">
-        <button type="button" id="btnCancelarEvento" class="btn btn-danger"><i class="bi bi-x"></i> Cancelar Agendamento</button>
-        <button type="button" id="btnEditarEvento" class="btn btn-secondary"><i class="bi bi-pencil"></i> Editar Agendamento</button>
+      <div class="modal-footer" id="footerCliente">
       </div>
     </div>
   </div>
@@ -1043,5 +1041,54 @@
   </div>
 </div>
 
+<!-- Modal Edit Agendamento -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAddEventoCliente">
+            <div class="">
+                <label for="SERVICOS"><strong>Serviços:</strong></label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox1" value="CORTE">
+                    <label class="form-check-label" for="inlineCheckbox1"><i class='bi bi-scissors'></i> Corte</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox2" value="TINTURA">
+                    <label class="form-check-label" for="inlineCheckbox2"><i class="bi bi-droplet"></i> Tintura </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="UNHAS">
+                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-brush"></i> Unhas</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="SPA">
+                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-stars"></i> Spa</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for=""><strong>Data:</strong></label>
+                    <input type="date" class="form-control form-control-sm" name="EVENTO_DATA" id="EVENTO_DATA">
+                </div>
+                <div class="col-6">
+                    <label for=""><strong>Horário:</strong></label>
+                    <input type="time" class="form-control form-control-sm" name="EVENTO_HORA" id="EVENTO_HORA">
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 

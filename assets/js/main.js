@@ -276,27 +276,29 @@ function viewAgendamento(id){
 
             let statusEvento = evento.EVENTO_STATUS;
 
+            const modalFooter = document.getElementById('footerCliente');
+
             switch(statusEvento){
 
                 case "PENDENTE":
-                    document.getElementById('statusEvento').innerHTML = `<i class="bi bi-hourglass" style="color:orange"></i> Pendente`;
+                    document.getElementById('statusEventoCliente').innerHTML = `<i class="bi bi-hourglass" style="color:orange"></i> Pendente`;
+                    modalFooter.innerHTML = `
+                    <button type="button" id="btnCancelarEvento" onclick="cancelarEvento(${evento.EVENTO_ID},${evento.EVENTO_DATA})" class="btn btn-danger"><i class="bi bi-x"></i> Cancelar</button>
+                    <button type="button" id="btnEditarEvento" onclick="editarEvento(${evento.EVENTO_ID}, ${evento.EVENTO_STATUS})" class="btn btn-secondary"><i class="bi bi-pencil"></i> Editar</button>
+                `;
                 break;
 
                 case "CONFIRMADO":
-                    document.getElementById('statusEvento').innerHTML = `<i class="bi bi-check" style="color:green></i> Confirmado`;
+                    document.getElementById('statusEventoCliente').innerHTML = `<i class="bi bi-check" style="color:green"></i> Confirmado`;
+                    modalFooter.innerHTML = `
+                    <button type="button" id="btnCancelarEvento" onclick="cancelarEvento(${evento.EVENTO_ID})" class="btn btn-danger"><i class="bi bi-x"></i> Cancelar</button>
+                `;
                 break;
 
                 case "CANCELADO":
-                    document.getElementById('statusEvento').innerHTML = `<i class="bi bi-x" style="color:red></i> Cancelado`;
+                    document.getElementById('statusEventoCliente').innerHTML = `<i class="bi bi-x" style="color:red"></i> Cancelado`;
                 break;
             }
-
-
-            const btnCancelarEvento = document.getElementById('btnCancelarEvento');
-            const btnEditarEvento = document.getElementById('btnEditarEvento');
-
-            btnCancelarEvento.addEventListener('click', () => cancelarEvento(evento.EVENTO_ID, evento.EVENTO_DATA));
-            btnEditarEvento.addEventListener('click', () => editarEvento(evento.EVENTO_ID, evento.EVENTO_DATA));
     })
 
     $('#viewAgendamento').modal('show');
