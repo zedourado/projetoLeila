@@ -783,11 +783,11 @@ function optionDataCliente(id) {
               }).then((result) => {
                 if (result.isConfirmed) {
                     updateDataWeek(eventoWeek, formData);
+                }else{
+                    addEventoCliente(id);
                 }
               });
-        } else {
-            addEventoCliente(id);
-        }
+        } 
     })
     .catch(error => {
         console.error('Erro na requisição:', error);
