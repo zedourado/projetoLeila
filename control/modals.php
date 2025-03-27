@@ -259,6 +259,118 @@
   </div>
 </div>
 
+<!-- Modal Cadastro Agendamento Admin -->
+<div class="modal fade" id="addEventoAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class='bi bi-calendar-plus'></i> Adicionar Agendamento</h1>
+        <button type="button" onclick="listAgendamentosAdmin(<?php echo $_SESSION['COLAB_ID'];?>)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAddEventoAdmin">
+          <div class="row">
+            <div class="col-12">
+              <label for=""><strong>Cliente:</strong></label>
+              <select class="form-select form-select-sm" name="EVENTO_CLIENTE" id="EVENTO_CLIENTE"></select>
+            </div>
+          </div>
+            <div class="">
+                <label for="SERVICOS"><strong>Serviços:</strong></label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox1" value="CORTE">
+                    <label class="form-check-label" for="inlineCheckbox1"><i class='bi bi-scissors'></i> Corte</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox2" value="TINTURA">
+                    <label class="form-check-label" for="inlineCheckbox2"><i class="bi bi-droplet"></i> Tintura </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="UNHAS">
+                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-brush"></i> Unhas</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="SPA">
+                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-stars"></i> Spa</label>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-12">
+              <label for=""><strong>Responsavel:</strong></label>
+              <select class="form-select form-select-sm" name="EVENTO_RESPONSAVEL" id="EVENTO_RESPONSAVEL"></select>
+            </div>
+          </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for=""><strong>Data:</strong></label>
+                    <input type="date" class="form-control form-control-sm" name="EVENTO_DATA" id="EVENTO_DATA">
+                </div>
+                <div class="col-6">
+                    <label for=""><strong>Horário:</strong></label>
+                    <input type="time" class="form-control form-control-sm" name="EVENTO_HORA" id="EVENTO_HORA">
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" onclick="addEventoAdmin(<?php echo $_SESSION['COLAB_ID'];?>)" class="btn btn-sm btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Add Agendamento Cliente -->
+<div class="modal fade" id="addEventoCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class='bi bi-calendar-plus'></i> Adicionar Agendamento</h1>
+        <button type="button" onclick="listAgendamentosCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAddEventoCliente">
+            <div class="">
+                <label for="SERVICOS"><strong>Serviços:</strong></label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox1" value="CORTE">
+                    <label class="form-check-label" for="inlineCheckbox1"><i class='bi bi-scissors'></i> Corte</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox2" value="TINTURA">
+                    <label class="form-check-label" for="inlineCheckbox2"><i class="bi bi-droplet"></i> Tintura </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="UNHAS">
+                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-brush"></i> Unhas</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="SPA">
+                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-stars"></i> Spa</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for=""><strong>Data:</strong></label>
+                    <input type="date" class="form-control form-control-sm" name="EVENTO_DATA" id="EVENTO_DATA">
+                </div>
+                <div class="col-6">
+                    <label for=""><strong>Horário:</strong></label>
+                    <input type="time" class="form-control form-control-sm" name="EVENTO_HORA" id="EVENTO_HORA">
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal"><i class='bi bi-x'></i>Cancelar</button>
+        <button type="button" class="btn btn-sm btn-success" onclick="optionDataCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)"><i class='bi bi-floppy'></i> Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal List Clientes -->
 <div class="modal fade" id="listClientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -789,113 +901,51 @@
   </div>
 </div>
 
-<!-- Modal Add Agendamento Cliente -->
-<div class="modal fade" id="addEventoCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Edit Agendamento Cliente -->
+<div class="modal fade" id="editEventoCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class='bi bi-calendar-plus'></i> Adicionar Agendamento</h1>
-        <button type="button" onclick="listAgendamentosCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class='bi bi-pencil'></i> Editar Agendamento</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="formAddEventoCliente">
+        <form id="formEditEventoCliente">
             <div class="">
                 <label for="SERVICOS"><strong>Serviços:</strong></label>
                 <br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox1" value="CORTE">
-                    <label class="form-check-label" for="inlineCheckbox1"><i class='bi bi-scissors'></i> Corte</label>
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="corte_edit" value="CORTE">
+                    <label class="form-check-label" for="corte_edit"><i class='bi bi-scissors'></i> Corte</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox2" value="TINTURA">
-                    <label class="form-check-label" for="inlineCheckbox2"><i class="bi bi-droplet"></i> Tintura </label>
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="tintura_edit" value="TINTURA">
+                    <label class="form-check-label" for="tintura_edit"><i class="bi bi-droplet"></i> Tintura </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="UNHAS">
-                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-brush"></i> Unhas</label>
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="unhas_edit" value="UNHAS">
+                    <label class="form-check-label" for="unhas_edit"><i class="bi bi-brush"></i> Unhas</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="SPA">
-                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-stars"></i> Spa</label>
+                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="spa_edit" value="SPA">
+                    <label class="form-check-label" for="spa_edit"><i class="bi bi-stars"></i> Spa</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <label for=""><strong>Data:</strong></label>
-                    <input type="date" class="form-control form-control-sm" name="EVENTO_DATA" id="EVENTO_DATA">
+                    <input type="date" class="form-control form-control-sm" name="EVENTO_DATA" id="evento_data_edit">
                 </div>
                 <div class="col-6">
                     <label for=""><strong>Horário:</strong></label>
-                    <input type="time" class="form-control form-control-sm" name="EVENTO_HORA" id="EVENTO_HORA">
+                    <input type="time" class="form-control form-control-sm" name="EVENTO_HORA" id="evento_hora_edit">
                 </div>
             </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal"><i class='bi bi-x'></i>Cancelar</button>
-        <button type="button" class="btn btn-sm btn-success" onclick="optionDataCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)"><i class='bi bi-floppy'></i> Salvar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Add Agendamento Admin -->
-<div class="modal fade" id="addEventoAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class='bi bi-calendar-plus'></i> Adicionar Agendamento</h1>
-        <button type="button" onclick="listAgendamentosAdmin(<?php echo $_SESSION['COLAB_ID'];?>)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="formAddEventoAdmin">
-          <div class="row">
-            <div class="col-12">
-              <label for=""><strong>Cliente:</strong></label>
-              <select class="form-select form-select-sm" name="EVENTO_CLIENTE" id="EVENTO_CLIENTE"></select>
-            </div>
-          </div>
-            <div class="">
-                <label for="SERVICOS"><strong>Serviços:</strong></label>
-                <br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox1" value="CORTE">
-                    <label class="form-check-label" for="inlineCheckbox1"><i class='bi bi-scissors'></i> Corte</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox2" value="TINTURA">
-                    <label class="form-check-label" for="inlineCheckbox2"><i class="bi bi-droplet"></i> Tintura </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="UNHAS">
-                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-brush"></i> Unhas</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="EVENTO_SERVICOS[]" id="inlineCheckbox3" value="SPA">
-                    <label class="form-check-label" for="inlineCheckbox3"><i class="bi bi-stars"></i> Spa</label>
-                </div>
-            </div>
-            <div class="row">
-            <div class="col-12">
-              <label for=""><strong>Responsavel:</strong></label>
-              <select class="form-select form-select-sm" name="EVENTO_RESPONSAVEL" id="EVENTO_RESPONSAVEL"></select>
-            </div>
-          </div>
-            <div class="row">
-                <div class="col-6">
-                    <label for=""><strong>Data:</strong></label>
-                    <input type="date" class="form-control form-control-sm" name="EVENTO_DATA" id="EVENTO_DATA">
-                </div>
-                <div class="col-6">
-                    <label for=""><strong>Horário:</strong></label>
-                    <input type="time" class="form-control form-control-sm" name="EVENTO_HORA" id="EVENTO_HORA">
-                </div>
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" onclick="addEventoAdmin(<?php echo $_SESSION['COLAB_ID'];?>)" class="btn btn-sm btn-primary">Salvar</button>
+        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"><i class='bi bi-x'></i>Fechar </button>
+        <button type="button" id="btnSalvarEditEventoCliente" class="btn btn-sm btn-success"><i class='bi bi-floppy'></i> Salvar</button>
       </div>
     </div>
   </div>

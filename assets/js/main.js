@@ -284,7 +284,7 @@ function viewAgendamento(id){
                     document.getElementById('statusEventoCliente').innerHTML = `<i class="bi bi-hourglass" style="color:orange"></i> Pendente`;
                     modalFooter.innerHTML = `
                     <button type="button" id="btnCancelarEvento" onclick="cancelarEvento(${evento.EVENTO_ID},${evento.EVENTO_DATA})" class="btn btn-danger"><i class="bi bi-x"></i> Cancelar</button>
-                    <button type="button" id="btnEditarEvento" onclick="editarEvento(${evento.EVENTO_ID}, ${evento.EVENTO_STATUS})" class="btn btn-secondary"><i class="bi bi-pencil"></i> Editar</button>
+                    <button type="button" id="btnEditarEvento" onclick="modalEditAgendamentoCliente(${evento.EVENTO_ID})" class="btn btn-secondary"><i class="bi bi-pencil"></i> Editar</button>
                 `;
                 break;
 
@@ -292,6 +292,8 @@ function viewAgendamento(id){
                     document.getElementById('statusEventoCliente').innerHTML = `<i class="bi bi-check" style="color:green"></i> Confirmado`;
                     modalFooter.innerHTML = `
                     <button type="button" id="btnCancelarEvento" onclick="cancelarEvento(${evento.EVENTO_ID})" class="btn btn-danger"><i class="bi bi-x"></i> Cancelar</button>
+                    <button type="button" id="btnEditarEvento" onclick="modalEditAgendamentoCliente(${evento.EVENTO_ID})" class="btn btn-secondary"><i class="bi bi-pencil"></i> Editar</button>
+
                 `;
                 break;
 
@@ -680,6 +682,65 @@ function modalEditCliente(id){
     })
 
     $('#editCliente').modal('show');
+
+}
+
+function modalEditAgendamentoCliente(id){
+    
+    const formData = new FormData();
+    formData.append('cmd', 'viewEvento');
+    formData.append('EVENTO_ID', id);
+
+    fetch('control/control_agenda.php', {
+        method: 'POST',
+        body: formData 
+    })
+    .then(response => response.json()) 
+    .then(data => {
+
+            const evento = data.evento;
+
+            const dataEvento = new Date(evento.EVENTO_DATA);
+            const dataHoje = new Date();
+
+            dataHoje.setHours(0, 0, 0, 0);
+            dataEvento.setHours(0, 0, 0, 0);
+            
+            const diffDias = Math.floor((dataEvento.getTime() - dataHoje.getTime()) / (1000 * 60 * 60 * 24));
+            
+            if (diffDias < 2) {
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Alteração Negada",
+                    text: "A edição só pode ser feita até 2 dias antes, para realizar essa alteração, contate o salão."
+                });
+
+            } else {
+                
+            $('#viewAgendamento').modal('hide');
+
+            const servicos = evento.EVENTO_SERVICOS;
+            const arrServicos = servicos.split(", ");
+
+            document.getElementById("corte_edit").checked = arrServicos.includes("CORTE");
+            document.getElementById("tintura_edit").checked = arrServicos.includes("TINTURA");
+            document.getElementById("unhas_edit").checked = arrServicos.includes("UNHAS");
+            document.getElementById("spa_edit").checked = arrServicos.includes("SPA");
+
+            document.getElementById('evento_data_edit').value = evento.EVENTO_DATA;
+            document.getElementById('evento_hora_edit').value = evento.EVENTO_HORA;
+
+            const btnSalvarEditEventoCliente = document.getElementById('btnSalvarEditEventoCliente');
+            btnSalvarEditEventoCliente.addEventListener('click', () => editEventoCliente(evento.EVENTO_ID));
+
+            $('#editEventoCliente').modal('show');
+
+        }
+
+    })
+
+
 
 }
 
@@ -1357,6 +1418,44 @@ function editarCliente(id){
               });
         }
     })
+
+
+}
+
+function editEventoCliente(id){
+
+    const formEditEventoCliente = document.getElementById('formEditEventoCliente');
+    const formData = new FormData(formEditEventoCliente);
+    formData.append('cmd', 'editEventoCliente');
+    formData.append('EVENTO_ID', id);
+
+    fetch('control/control_agenda.php', {
+        method: 'POST',
+        body: formData 
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        if (data.success === true) {
+            $('#editEventoCliente').modal('hide');
+            viewAgendamento(id);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: data.message,
+                showConfirmButton: false,
+                timer: 2000
+              });
+        } else {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: data.message,
+                showConfirmButton: false,
+                timer: 2000
+              });
+        }
+    })
+
 
 
 }

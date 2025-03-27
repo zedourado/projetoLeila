@@ -243,6 +243,36 @@ switch($cmd){
         }
 
     break;
+
+    case "editEventoCliente":
+
+        $EVENTO_ID = $_POST['EVENTO_ID'];
+        $EVENTO_SERVICOS = isset($_POST['EVENTO_SERVICOS']) ? implode(', ', $_POST['EVENTO_SERVICOS']) : '';
+        $EVENTO_DATA = $_POST['EVENTO_DATA'];
+        $EVENTO_HORA = $_POST['EVENTO_HORA'];
+        $EVENTO_STATUS = "PENDENTE";
+
+        $sqlUpdateEventoCliente = "UPDATE agenda SET EVENTO_SERVICOS = :EVENTO_SERVICOS, EVENTO_DATA = :EVENTO_DATA, EVENTO_HORA = :EVENTO_HORA, EVENTO_STATUS = :EVENTO_STATUS WHERE EVENTO_ID = :EVENTO_ID";
+        $queryUpdateEventoCliente = $PDO->prepare($sqlUpdateEventoCliente);
+        $queryUpdateEventoCliente->bindParam(':EVENTO_ID', $EVENTO_ID);
+        $queryUpdateEventoCliente->bindParam(':EVENTO_SERVICOS', $EVENTO_SERVICOS);
+        $queryUpdateEventoCliente->bindParam(':EVENTO_DATA', $EVENTO_DATA);
+        $queryUpdateEventoCliente->bindParam(':EVENTO_HORA', $EVENTO_HORA);
+        $queryUpdateEventoCliente->bindParam(':EVENTO_STATUS', $EVENTO_STATUS);
+        
+        if($queryUpdateEventoCliente->execute()){
+
+            $response['success'] = true;
+            $response['message'] = "Agendamento editado, aguarde confirmação do salão!";
+
+        }else{
+
+            $response['success'] = false;
+            $response['message'] = "Ocorreu um erro ao editar o agendamento.";
+
+        }
+
+    break;
 }
 
 echo json_encode($response);

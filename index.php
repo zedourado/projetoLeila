@@ -76,7 +76,7 @@
         <h4>Olá <?php echo $_SESSION['CLIENTE_NOME']; ?></h4>
         <script>listConfirmadosIndexCliente(<?php echo $_SESSION['CLIENTE_ID'];?>)</script>
         <div class="mt-5">
-            <h5>Agendamentos Confirmados:</h5>
+            <h5>Meus Agendamentos:</h5>
             <div id="listConfirmadosCliente">
             </div>
         </div>
