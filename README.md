@@ -1,8 +1,9 @@
-# Meu Projeto
+# Projeto - Salão de Beleza - "Cabeleleila Leila - Salão de Beleiza"
+
 
 ## Descrição 🚀
 
-Este projeto é uma aplicação desenvolvida com **PHP**, **MySQL**, **HTML5**, **CSS3**, **JavaScript Vanilla** e **Bootstrap 5**. Ele foi criado para [descreva o objetivo do seu projeto, por exemplo, "gerenciar agendamentos de clientes"]. 
+Este projeto é uma aplicação desenvolvida com **PHP**, **MySQL**, **HTML5**, **CSS3**, **JavaScript Vanilla** e **Bootstrap 5**. Ele foi criado para a realização da Avaliação Técnica do Processo Seletivo para a vaga de Desenvolvedor na DSIN | Tecnologia da Informação. 
 
 ## Tecnologias Utilizadas ⚙️
 
@@ -30,8 +31,8 @@ Este projeto é uma aplicação desenvolvida com **PHP**, **MySQL**, **HTML5**, 
 
 2. **Configure o banco de dados MySQL**:
     - Abra o **phpMyAdmin** (geralmente disponível em [http://localhost/phpmyadmin](http://localhost/phpmyadmin)).
-    - Crie um banco de dados com o nome desejado (por exemplo, `meu_projeto`).
-    - Importe o esquema SQL fornecido (caso haja um arquivo `schema.sql` no projeto) ou crie as tabelas manualmente.
+    - Crie um banco de dados com o nome "projetoLeila".
+    - Importe o esquema SQL fornecido (via arquivo `database.sql`).
 
 3. **Acesse o projeto no navegador**:
     - Abra seu navegador e acesse o projeto em:
@@ -45,5 +46,5 @@ Este projeto está sob a licença [MIT](LICENSE).
 
 Se você tiver alguma dúvida, sinta-se à vontade para me contatar!
 
-- **E-mail**: seuemail@dominio.com
-- **GitHub**: [@seuusuario](https://github.com/seuusuario)
+- **E-mail**: diisantorsula@gmail.com
+- **GitHub**: [@zedourado](https://github.com/zedourado)
