@@ -5,6 +5,8 @@
 
 Este projeto é uma aplicação desenvolvida com **PHP**, **MySQL**, **HTML5**, **CSS3**, **JavaScript Vanilla** e **Bootstrap 5**. Ele foi criado para a realização da Avaliação Técnica do Processo Seletivo para a vaga de Desenvolvedor na DSIN | Tecnologia da Informação. 
 
+Este projeto foi desenvolvido com o objetivo de oferecer uma plataforma web onde os clientes do salão pudessem se cadsatrar, gerenciar e realizar seus agendamentos no salão da Leila - assim como a própria Leila e seus colaboradores pudesse, através de um painel administrativo, gerenciar os agendamentos dos serviços ofertados pelo salão.
+
 ## Tecnologias Utilizadas ⚙️
 
 - **Frontend**: 
