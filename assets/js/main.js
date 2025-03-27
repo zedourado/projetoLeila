@@ -997,6 +997,11 @@ function listAgendamentosCliente(id){
 
             const listAgendamentos = document.getElementById('listAgendamentos');
             listAgendamentos.innerHTML = '';
+
+            if (eventos.length === 0) {
+                listAgendamentos.innerHTML = `<br><p class="text-muted">Não há agendamentos</p>`;
+                return;
+            }
     
             eventos.forEach(evento => {
                 let statusColor, statusIcon;
@@ -1065,6 +1070,11 @@ function listAgendamentosAdmin(id){
 
             const listAgendamentosAdmin = document.getElementById('listAgendamentosAdm');
             listAgendamentosAdmin.innerHTML = '';
+
+            if (eventos.length === 0) {
+                listAgendamentos.innerHTML = `<br><br><p class="text-muted">Não há agendamentos</p>`;
+                return;
+            }
     
             eventos.forEach(evento => {
                 let statusColor, statusIcon;
@@ -1236,6 +1246,11 @@ function listConfirmadosIndexCliente(id){
 
             const listAgendamentos = document.getElementById('listConfirmadosCliente');
             listAgendamentos.innerHTML = '';
+
+            if (eventos.length === 0) {
+                listAgendamentos.innerHTML = `<br><br><p class="text-muted">Não há agendamentos</p>`;
+                return;
+            }
     
             eventos.forEach(evento => {
                 let statusColor, statusIcon;
@@ -1276,7 +1291,7 @@ function listConfirmadosIndexCliente(id){
                         </div>
                     </div>
                 `;
-            
+
                 listAgendamentos.innerHTML += card;
             });
             
@@ -1301,6 +1316,11 @@ function listConfirmadosIndexAdmin(id){
 
             const listAgendamentos = document.getElementById('listConfirmadosColaborador');
             listAgendamentos.innerHTML = '';
+
+            if (eventos.length === 0) {
+                listAgendamentos.innerHTML = `<br><br><p class="text-muted">Não há agendamentos</p>`;
+                return;
+            }
     
             eventos.forEach(evento => {
                 let statusColor, statusIcon;
